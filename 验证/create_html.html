@@ -1,0 +1,50 @@
+# coding:utf-8
+def generate(i, title, question, imgs, answer):
+    # 定义想要生成的Html的基本格式
+    # 使用%来插入python代码
+    template_demo = """
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <style>
+            .text{
+                word-wrap: break-word;
+                word-break: normal;
+                padding-top: 15px
+            }
+            img{
+                padding-top: 15px;
+            }
+        </style>
+    </head>
+    <title>{{title}}</title>
+    <body>
+    %
+    <h1 align="center">{{ question }}</h1>
+    <div style="width:100%;text-align:center">
+    % for link in items:
+    <img style="width: 150px;height: 150px;" src="{{link}}">
+    %end
+    <br>
+    </div>
+    %
+    <div class="text" align="center">{{ answer }}</div>
+    </body>
+    </html>
+    """
+
+    html = template(template_demo, title=title, question=question, items=imgs, answer=answer)
+    filename = "./htmls/"+str(i) + ".html"
+
+     with open(filename, 'wb') as f:
+        f.write(html.encode('utf-8'))
+def main():
+    title = "题目"
+    question = "问题？"
+    imgs = ["1", "2", "3"]
+    answer = "鬼知道"
+    generate(title, question, imgs, answer)
+
+if __name__ == '__main__':
+    main()
