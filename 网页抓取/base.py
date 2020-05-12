@@ -4,7 +4,7 @@ import requests
 from lxml import etree
 from selenium import webdriver
 
-driver=webdriver.Ie()
+driver = webdriver.Ie()
 driver.get("http://sit-report.m.com/20190908/1567926062.html")
 
 
