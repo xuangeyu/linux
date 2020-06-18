@@ -27,6 +27,14 @@ def get_date(index, max_time, min_time):
                             }
                         }
                     }
+                ],
+                "must_not": [
+                    {
+                        "multi_match": {
+                            "query": "[WARN ]",
+                            "fields": ["message"]
+                        }
+                    }
                 ]
             }
         }
